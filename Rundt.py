@@ -8,7 +8,7 @@ ledG = LED(17)
 ledY = LED(27)
 ledR = LED(22)
 
-delay1 = 0.5
+delay1 = 0.25
 
 while True:
     ledr.on()

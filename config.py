@@ -1,0 +1,5 @@
+EMAIL_ADDRESS="BBASIKU@gmail.com"
+
+PASSWORD="__"
+
+EMAIL_ADDRESS_rx="Bjar1862@DJHhadsten.dk"

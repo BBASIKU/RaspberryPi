@@ -1,0 +1,20 @@
+from gpiozero import LED
+from DesignSpark.Pmod.HAT import createPmod
+import time
+
+rele1 = LED(5)
+rele2 = LED(6)
+rele3 = LED(13)
+rele4 = LED(19)
+
+if __name__ == '__main__':
+    
+    therm = createPmod('TC1','JBA')
+    time.sleep(0.1)
+     while True:
+            cel = therm.readCelcius()
+            print(cel)
+            time.sleep(1)
+
+    finally:
+        therm.cleanup()

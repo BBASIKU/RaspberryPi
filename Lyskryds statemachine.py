@@ -8,45 +8,89 @@ ledG = LED(17) #ØV
 ledY = LED(27) #ØV
 ledR = LED(22) #ØV
 
-delay0 = 1.0
-delay1 = 1.5 
-delay2 = 1.5 
-delay3 = 3.0 
-delay4 = 2.0 
+delay1 = 2.0 #Rødt lys
+delay2 = 1.0 #Gult lys
+delay3 = 4.0 #Grønt lys
+
+y=0
+z=0
+q=0
 
 
-def rød(x):
+def Rød(x):
+    
+    global y
+    
+    y=y+1
+    print("Der har været rødt lys "+str(y),"gange")
     
     if x=="NS":
-        #x="ØV"
-        print ("Lyskryds NS")
+        print ("Lyskryds Rødt")
+        
+        ledr.on()
+        ledR.on()
         sleep(delay1)
+        
         return NS(x)
     
+        
     elif x=="ØV":
-        #x="NS"
-        print ("Lyskryds ØV")
+        print ("Lyskryds Rødt")
+        
+        ledr.on()
+        ledR.on()
         sleep(delay1)
+        
         return ØV(x)
-    
+
     
 def NS(x):
+    
+    global z
+    z=z+1
+    print("Der har været grønt lys nord-syd på "+str(z), "gange")
     
     if x=="NS":
         x="ØV"
         print ("Lyskryds NS kører")
-        sleep(delay1)
-        return rød(x)
+        
+        ledy.on()
+        sleep(delay2)
+        ledr.off()
+        ledy.off()
+        ledg.on()
+        sleep(delay3)
+        ledg.off()
+        ledy.on()
+        sleep(delay2)
+        ledy.off()
+        
+        return Rød(x)
     
     
 def ØV(x):
     
+    global q
+    q=q+1
+    print("Der har været grønt lys øst-vest på "+str(q), "gange")
+    
     if x=="ØV":
         x="NS"
         print ("Lyskryds ØV kører")
-        sleep(delay1)
-        return rød(x)
+        
+        ledY.on()
+        sleep(delay2)
+        ledR.off()
+        ledY.off()
+        ledG.on()
+        sleep(delay3)
+        ledG.off()
+        ledY.on()
+        sleep(delay2)
+        ledY.off()
+        
+        return Rød(x)
     
     
-state=rød(x="NS")
-while state: state=rød(x="NS")
+state=Rød(x="NS")
+while state: state=Rød(x="NS")
